@@ -15,7 +15,8 @@ def downloadView(request):
     if request.method == 'POST':
         torrentUrl = request.POST.get('torrentUrl')
         #TODO: Change directory on server
-        script = 'aria2c "%s -d /home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/ &"'%(torrentUrl)
+        script = 'aria2c "%s" -d /home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/ &'%(torrentUrl)
+        print script
 
         process = Popen(script, shell = True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
