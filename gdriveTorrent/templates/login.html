@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Login | Gdrive Torrent</title>
+
+        <!-- Bootstrap -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- Toastr -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    </head>
+
+    <body class="login">
+        <div>
+
+            <div class="login_wrapper">
+                <div class="animate form login_form">
+                    <section class="login_content">
+                        <form class="" action="/" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                    <h1 style="text-align:center">Login | Gdrive Torrent<h1>
+                                            <div>
+                                                {{ form.username }}
+                                            </div>
+                                            <div>
+                                                {{ form.password }}
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-default submit" type="submit">Login</a>
+                                            </div>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+        {% if error %}
+        <script type="text/javascript" charset="utf-8">
+toastr.error('{{ error }}');
+        </script>
+        {% endif %}
+    </body>
+</html>
