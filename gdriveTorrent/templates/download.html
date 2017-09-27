@@ -43,9 +43,9 @@
                 </div>
             </form>
         </section>
-        {% if error %}
+        {% if status %}
         <script type="text/javascript" charset="utf-8">
-toastr.error('{{ error }}');
+toastr.success('{{ status }}');
         </script>
         {% endif %}
     </body>
