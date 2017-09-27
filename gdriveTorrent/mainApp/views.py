@@ -16,6 +16,7 @@ def downloadView(request):
         torrentUrl = request.POST.get('torrentUrl')
         #TODO: Change directory on server
         script = 'aria2c "%s" -d /home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/ &'%(torrentUrl)
+        #TODO: Aria2c on-complete will run a python script that will find out newly added file in download folder;run gdrive command and upload it there; and delete the file from ./downloads folder
         print script
 
         process = Popen(script, shell = True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
