@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Login | Gdrive Torrent</title>
+        <title>Enter URL of torrent | Gdrive Torrent</title>
 
         <!-- Bootstrap -->
         <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -26,32 +26,23 @@
     </head>
 
     <body class="login">
-        <div>
-
-            <div class="login_wrapper">
-                <div class="animate form login_form">
-                    <section class="login_content">
-                        <form class="" action="/" method="POST">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                                    <h1 style="text-align:center">Login | Gdrive Torrent<h1>
-                                            <br/>
-                                                {{ form.username }}
-                                            <br/>
-                                                {{ form.password }}
-                                            <br/>
-                                            <div class="col-xs-4 col-xs-offset-4">
-                                                <button class="btn btn-info col-xs-12" type="submit">Login</a>
-                                            </div>
+        <section class="login_content">
+            <form class="" action="/download/" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                        <h1 style="text-align:center">Enter URL of Torrent to Download | Gdrive Torrent<h1>
+                                <div>
+                                    <input class="form-control" type="text" name="torrentUrl" id="torrentUrl" value="">
                                 </div>
-                            </div>
-                        </form>
-                    </section>
+                                <br/>
+                                <div class="col-xs-4 col-xs-offset-4">
+                                    <button class="btn btn-info submit col-xs-12" type="submit">Download</a>
+                                </div>
+                    </div>
                 </div>
-
-            </div>
-        </div>
+            </form>
+        </section>
         {% if error %}
         <script type="text/javascript" charset="utf-8">
 toastr.error('{{ error }}');
