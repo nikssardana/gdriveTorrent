@@ -6,7 +6,7 @@ import os
 import sys
 from subprocess import Popen
 import subprocess
-
+import commands
 
 f = open('done.txt','a')
 f.write('\nFILES: ')
@@ -14,27 +14,31 @@ f.write('\nFILES: ')
 def uploadFiles():
     #Get list of files in download folder
     #TODO: Change directory on server
-    files = os.listdir('/home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/')
+    path = '/home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/'
+    files = os.listdir(path)
     for fileName in files:
         f.write(fileName)
-        #TODO:run gdrive command and upload the file "./downloads/fileName"
 
-    #TODO:Delete the uploaded file from ./downloads folder
+        #Run gdrive command and upload the file "./downloads/fileName"
+        script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc %s%s > gdriveOutput.txt'%(path,fileName)
+        #Output logs to a file
+        os.system(script)
+
+    #Delete the uploaded file from ./downloads folder
+    script = 'rm %s%s'%(path,fileName)
+    os.system(script)
+
 
 #If another instance of this script is already running, exit
-import commands
-import os
-import time
-import sys
-
 def running():
     script_name = 'downloaded.py'
     l = commands.getstatusoutput("ps aux | grep -e '%s' | grep -v grep | awk '{print $2}'| awk '{print $2}'" % script_name)
-    print(l)
     if l[1] != '\n' and l[1]:
         print 'Already running'
+        return True
     else:
-        print 'NOT RUNNING'
+        print 'Not Running'
+        return False
 
 if not running():
     uploadFiles()
