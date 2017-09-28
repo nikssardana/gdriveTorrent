@@ -46,3 +46,4 @@ def running():
 
 if not running():
     uploadFiles()
+
