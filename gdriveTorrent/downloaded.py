@@ -29,7 +29,7 @@ def uploadFiles():
         while poll == None:
             poll = process.poll()
             continue
-        script = 'rm "%s%s"'%(path,fileName)
+        script = 'rm -r "%s%s"'%(path,fileName)
         os.system(script)
 
 
