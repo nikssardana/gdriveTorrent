@@ -1,2 +1,3 @@
 downloads/
 *.pyc
+db.sqlite3
