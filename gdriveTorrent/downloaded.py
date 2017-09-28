@@ -20,7 +20,7 @@ def uploadFiles():
         f.write(fileName)
 
         #Run gdrive command and upload the file "./downloads/fileName"
-        script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc %s%s > gdriveOutput.txt'%(path,fileName)
+        script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc %s%s >> gdriveOutput.txt'%(path,fileName)
         #Output logs to a file
         os.system(script)
 
