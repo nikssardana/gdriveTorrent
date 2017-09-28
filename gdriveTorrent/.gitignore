@@ -2,5 +2,5 @@ downloads/
 *.pyc
 db.sqlite3
 done.txt
-gdriveOutput.txt
+outputGdrive.txt
 output.txt
