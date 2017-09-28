@@ -15,8 +15,9 @@ def downloadView(request):
     if request.method == 'POST':
         torrentUrl = request.POST.get('torrentUrl')
         #TODO: Change directory on server
-        script = 'aria2c "%s" -d /home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/ &'%(torrentUrl)
         #TODO: Copy aria2c.conf on server with new path of downloaded.py
+        path = '/home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/'
+        script = 'aria2c "%s" -d %s --seed-time=0 &'%(torrentUrl, path)
         print script
 
         #Output logs to a file

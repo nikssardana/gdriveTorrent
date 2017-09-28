@@ -19,14 +19,18 @@ def uploadFiles():
     for fileName in files:
         f.write(fileName)
 
-        #Run gdrive command and upload the file "./downloads/fileName"
-        script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc "%s%s" >> gdriveOutput.txt'%(path,fileName)
-        #Output logs to a file
-        os.system(script)
+        #Run gdrive command and upload the file:"./downloads/fileName" to gdrive
+        script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc "%s%s"'%(path,fileName)
+        logFile = open('outputGdrive.txt','w')
+        process = Popen(script, shell = True, stdout=logFile, stderr=logFile)
 
-    #Delete the uploaded file from ./downloads folder
-    script = 'rm %s%s'%(path,fileName)
-    os.system(script)
+        #Delete the uploaded file from ./downloads folder, after the subprocess is completed
+        poll = process.poll()
+        while poll == None:
+            poll = process.poll()
+            continue
+        script = 'rm %s%s'%(path,fileName)
+        os.system(script)
 
 
 #If another instance of this script is already running, exit
