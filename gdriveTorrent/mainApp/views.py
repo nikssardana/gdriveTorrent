@@ -20,7 +20,9 @@ def downloadView(request):
         #TODO: Implement downloaded.py
         print script
 
-        process = Popen(script, shell = True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        #Output logs to a file
+        logFile = open('output.txt','w')
+        process = Popen(script, shell = True, stdout=logFile, stderr=subprocess.PIPE)
 
         dictV['status'] = 'Your torrent will be downloaded shortly...'
 
