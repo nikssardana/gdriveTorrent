@@ -17,7 +17,6 @@ def downloadView(request):
         #TODO: Change directory on server
         script = 'aria2c "%s" -d /home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/ &'%(torrentUrl)
         #TODO: Copy aria2c.conf on server with new path of downloaded.py
-        #TODO: Implement downloaded.py
         print script
 
         #Output logs to a file
