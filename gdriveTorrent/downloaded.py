@@ -36,7 +36,10 @@ def uploadFiles():
 #If another instance of this script is already running, exit
 def running():
     script_name = 'downloaded.py'
-    l = commands.getstatusoutput("ps aux | grep -e '%s' | grep -v grep | awk '{print $2}'| awk '{print $2}'" % script_name)
+    try:
+        l = commands.getstatusoutput("ps aux | grep -e '%s' | grep -v grep | awk '{print $2}'| awk '{print $2}'" % script_name)
+    except:
+        return False
     if l[1] != '\n' and l[1]:
         print 'Already running'
         return True
