@@ -7,14 +7,14 @@ import sys
 from subprocess import Popen
 import subprocess
 import commands
+from gdriveTorrent import settings
 
 f = open('done.txt','a')
 f.write('\nFILES: ')
 
 def uploadFiles():
     #Get list of files in download folder
-    #TODO: Change directory on server
-    path = '/home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/'
+    path = settings.BASE_DIR + '/downloads/'
     files = os.listdir(path)
     for fileName in files:
         f.write(fileName)
