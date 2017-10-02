@@ -21,7 +21,7 @@ def uploadFiles():
 
         #Run gdrive command and upload the file:"./downloads/fileName" to gdrive
         script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc "%s%s"'%(path,fileName)
-        logFile = open('outputGdrive.txt','w')
+        logFile = open('outputGdrive.txt','a')
         process = Popen(script, shell = True, stdout=logFile, stderr=logFile)
 
         #Delete the uploaded file from ./downloads folder, after the subprocess is completed
