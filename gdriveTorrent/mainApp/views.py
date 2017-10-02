@@ -8,15 +8,15 @@ from django.contrib.auth.decorators import login_required
 import os
 from subprocess import Popen
 import subprocess
+from django.conf import settings
 
 @login_required
 def downloadView(request):
     dictV = {}
+    path = settings.BASE_DIR + '/downloads/'
+    downloadedScript = settings.BASE_DIR + '/downloaded.py'
     if request.method == 'POST':
         torrentUrl = request.POST.get('torrentUrl')
-        downloadedScript = '/home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloaded.py'
-        #TODO: Change directory on server
-        path = '/home/nikhil/Programs/Django/gdriveTorrent/gdriveTorrent/downloads/'
         script = 'aria2c "%s" -d %s --seed-time=0 --on-bt-download-complete=%s &'%(torrentUrl, path,downloadedScript)
         print script
 
