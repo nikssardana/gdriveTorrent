@@ -20,7 +20,7 @@ def uploadFiles():
         f.write(fileName)
 
         #Run gdrive command and upload the file:"./downloads/fileName" to gdrive
-        script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc "%s%s"'%(path,fileName)
+        script = 'gdrive upload -p 0BxvPH5Yx_NkmRzluTk9sLTlMUXc "%s%s" --recursive'%(path,fileName)
         logFile = open('outputGdrive.txt','a')
         process = Popen(script, shell = True, stdout=logFile, stderr=logFile)
 
