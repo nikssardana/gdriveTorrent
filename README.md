@@ -10,20 +10,52 @@ A Django Application that allows you to download torrents directly to your Googl
 - gdrive - a command line utility to access gdrive from your command line (https://github.com/prasmussen/gdrive)
 
 ## Running the code on your local system
-Right now, the code must be cloned in a specific directory to run it. (/home/nikhil/Programs/Django/gdriveTorrent)
-cd into the cloned folder.
+
+### Easy Install
+
+`bash -c "$(curl -sL https://raw.githubusercontent.com/nikssardana/gdriveTorrent/master/install.sh)"`
+
+### Manual Install
+
+Right now, the code must be cloned in a specific directory to run it. (~/Programs/Django/gdriveTorrent)
+
+```
+git clone https://github.com/nikssardana/gdriveTorrent.git && cd gdriveTorrent
+```
+
 Add executable permissions to downloaded.py file by typing:
-    sudo chmod +x downloaded.py
-Initialise the gdrive utility by typing:
-    gdrive init
+
+```
+sudo chmod +x downloaded.py
+```
+
+Initialize the gdrive utility by typing:
+
+```
+gdrive list
+```
+
 Open the url specified in gdrive and give appropriate permissions. Then, copy the access token from your browser and paste it into the terminal.
+
 Create database:
-    Env/bin/python gdriveTorrent/manage.py migrate
+
+```
+python gdriveTorrent/manage.py migrate
+```
+
 Create a superuser:
-    Env/bin/python gdriveTorrent/manage.py createsuperuser
+
+```
+Env/bin/python gdriveTorrent/manage.py createsuperuser
+```
+
 Run the django development server:
-    Env/bin/python gdriveTorrent/manage.py runserver 0.0.0.0:8000
-Open the url: localhost:8000 in your browser and login with the admin credentials you just created.
+
+```
+Env/bin/python gdriveTorrent/manage.py runserver 0.0.0.0:8000
+```
+
+Open the url: `http://localhost:8000` in your browser and login with the admin credentials you just created.
 
 ## Note
 This application is currently in development. There might be a lot of bugs.
