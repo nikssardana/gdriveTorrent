@@ -40,13 +40,13 @@ Create database:
 - Open the url: *localhost:8000* in your browser and login with the admin credentials you just created.
 
 ## Note
-This application is currently in development. There might be a lot of bugs.
+This application is currently in development phase. There might be a lot of bugs.
 
 Pull requests are welcome!
 
-Also, I do not promote any illegal use of this application. 
+Also, I do not promote any illegal use of this application. Use wisely!
 
-Use wisely!
+
 
 Please make changes in a separate branch and then make pull requests.
 
@@ -55,4 +55,4 @@ Please make changes in a separate branch and then make pull requests.
 - Remove dependency on path (/nikhil/Programs...) to allow the application to run in any directory
 - Extend the application to allow multiple users. The application should ask for write access to gdrive. It should then download the files on their gdrive instead of the developer's gdrive.
 - One click deploy option, so that users can deploy the application on their own servers (heroku or any other server)
-- Right now, the status of all the commands are stored in separate files (output.txt, gDriveOutput.txt and done.txt). Store it in a database and show it in the webpage.
+- Currently, the status of all the commands are stored in separate files (output.txt, gDriveOutput.txt and done.txt). Store it in a database and show it in the webpage.
