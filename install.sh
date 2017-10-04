@@ -4,6 +4,43 @@ green="tput setaf 2"
 yellow="tput setaf 3"
 reset="tput sgr0"
 
+#find tools
+python=$(which python)
+git=$(which git)
+
+#locations
+install_dir="${HOME}/Programs/Django"
+git_repo="https://github.com/nikssardana/gdriveTorrent.git"
+gdriveURL="https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"
+
+
+start_server(){
+$python $install_dir/gdriveTorrent/gdriveTorrent/manage.py runserver 0.0.0.0:8000;
+exit 1
+}
+
+if [  ! -z $1 ]; then
+  if [ -f ~/.finished_setup ]; then
+
+    if [ "$1" == "start" ]; then
+      start_server
+    else
+      $red
+      echo "unable to start webserver on port 8000..."
+      $reset
+      exit 1
+    fi
+
+  else
+    $red
+    echo "must have run setup first to start server, exiting..."
+    $reset
+    exit 1
+  fi
+else
+  :
+fi
+
 $green
 echo "##########################"
 echo "# gdriveTorrent Installer"
@@ -26,16 +63,6 @@ if [ -f ~/.finished_setup ]; then
     exit 1
   fi
 fi
-
-
-#find tools
-python=$(which python)
-git=$(which git)
-
-#locations
-install_dir="${HOME}/Programs/Django"
-git_repo="https://github.com/nikssardana/gdriveTorrent.git"
-gdriveURL="https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"
 
 #remove repo if cloned before
 if [ -d $install_dir ];then
@@ -65,14 +92,14 @@ fi
 ## test if dependencies are installed
 
 # test python, if pip installed, install virtualenv
-if which python; then
-  if which pip; then
+if which python 1>/dev/null; then
+  if which pip 1>/dev/null; then
     $green
     echo "Upgrading pip...."
     echo
     $reset
-    pip install --upgrade pip
-    if pip install virtualenv; then
+    pip install --upgrade pip 1>/dev/null
+    if pip install virtualenv 1>/dev/null; then
       $green
       echo "Installing virtualenv...."
       echo
@@ -97,7 +124,7 @@ else
 fi
 
 
-if which git; then
+if which git 1>/dev/null; then
   :
 else
   $red
@@ -106,16 +133,16 @@ else
   exit 1
 fi
 
-if which wget; then
+if which wget 1>/dev/null; then
   $green
   echo "Downloading gdrive..."
-  echo
   wget -q $gdriveURL -O /usr/bin/gdrive && chmod +x /usr/bin/gdrive
 
   if [ $? == 0 ]; then
     echo
     $green
     echo "gdrive downloaded successfully"
+    echo
     $reset
   else
     $red
@@ -132,11 +159,11 @@ else
   exit 1
 fi
 
-if which aria2c; then
+if which aria2c 1>/dev/null; then
   :
 else
   $red
-  echo "aria2c not installed, install by running, sudo apt-get install aria2 -y then rerun this script."
+  echo "aria2c not installed, install by running, (sudo apt-get install aria2 -y), then re-run this script."
   $reset
   exit 1
 fi
@@ -147,6 +174,7 @@ else
 
   $green
   echo "Install directory does not exist, creating..."
+  echo
   $reset
 
   if mkdir -p $install_dir; then
@@ -155,11 +183,13 @@ else
     $red
     echo "Failed to create ${install_dir}, exiting..."
     $reset
+    exit 1
   fi
 fi
 
 $green
-cd $install_dir && $git clone $git_repo
+cd $install_dir && $git clone $git_repo 1>/dev/null
+echo
 $reset
 
 if [ $? == 0 ]; then
@@ -181,7 +211,9 @@ else
 fi
 
 $yellow
-echo "initializing gdrive, have your URL + access token ready!"
+echo
+echo "initializing gdrive, have your browser + gmail ready!"
+echo
 $reset
 
 sleep 3
@@ -198,8 +230,11 @@ else
   exit 1
 fi
 
-if pip install Django; then
-  :
+if pip install Django 1>/dev/null; then
+  $green
+  echo "Django installed!"
+  echo
+  $reset
 else
   $red
   echo "failed to install Django, exiting..."
@@ -220,9 +255,26 @@ else
 fi
 
 if $python $install_dir/gdriveTorrent/gdriveTorrent/manage.py createsuperuser; then
-
   $green
   echo "Created superuser"
+
+  if sudo chown -R $(whoami):$(whoami) $install_dir/ && sudo chmod -R 755 $install_dir/; then
+    $yellow
+    echo
+    echo "Changed permissions on to $(whoami):$(whoami) - 755 on ${install_dir}."
+    echo
+    $reset
+  else
+    $red
+    echo "Failed to set permissions to $(whoami):whoami and chmod 755 on ${install_dir}, login may not work correctly..."
+    $reset
+  fi
+
+  $green
+  echo
+  echo "##################################################"
+  echo "# Setup Done - Navigate to http://localhost:8000 #"
+  echo "##################################################"
   echo
   $reset
 else
@@ -231,24 +283,16 @@ else
   $reset
   exit 1
 fi
-$yellow
 
-#If needed later, currently isn't
-# if $python $install_dir/gdriveTorrent/gdriveTorrent/manage.py runserver 0.0.0.0:8000; then
-#   $green
-#   echo "Started web server on Port 8000!"
-#   echo
-#   $reset
-# else
-#   $red
-#   echo "Failed to create webserver, exiting..."
-#   $reset
-#   exit 1
-# fi
-#
-# $green
-# echo "App is available at http://localhost:8000"
-# echo
+if $python $install_dir/gdriveTorrent/gdriveTorrent/manage.py runserver 0.0.0.0:8000; then
+:
+else
+  $red
+  echo "Failed to create webserver, exiting..."
+  $reset
+  exit 1
+fi
+
 touch ~/.finished_setup
 $reset
 exit 0
