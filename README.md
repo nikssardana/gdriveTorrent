@@ -14,10 +14,10 @@ A Django Application that allows you to download torrents directly to your Googl
 ### Easy install
 
 ```
-`bash -c "$(curl -sL https://raw.githubusercontent.com/nikssardana/gdriveTorrent/master/install.sh)"`
+bash -c "$(curl -sL https://raw.githubusercontent.com/nikssardana/gdriveTorrent/master/install.sh)"
 ```
 
-Note: (Tested on ubuntu)
+#### Note: (Tested on ubuntu)
 
 apt-get/yum packages are not installed automatically due to security concerns, the installer will inform you of any packages missing (if there are any), but here is a list of packages needed:
 ```
