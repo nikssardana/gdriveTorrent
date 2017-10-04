@@ -10,36 +10,15 @@ A Django Application that allows you to download torrents directly to your Googl
 - gdrive - a command line utility to access gdrive from your command line (https://github.com/prasmussen/gdrive)
 
 ## Running the code on your local system
-
-### Easy install
-
-```
-`bash -c "$(curl -sL https://raw.githubusercontent.com/nikssardana/gdriveTorrent/master/install.sh)"`
-```
-
-Note: (Tested on ubuntu)
-
-apt-get/yum packages are not installed automatically due to security concerns, the installer will inform you of any packages missing (if there are any), but here is a list of packages needed:
-```
-sudo apt-get install python-pip python-dev build-essential aria2 git wget -y && sudo pip install virtualenv
-```
-
-After setup is complete, you may start the server at any time (or have a job do it) by running:
-
-```
-install.sh start_server
-```
-
-### Manual Install
 - Right now, the code must be cloned in a specific directory to run it. (E.g: /home/nikhil/Programs/Django/gdriveTorrent)
 
     `cd into the cloned folder.`
 - Add executable permissions to downloaded.py file by typing:
 
     `sudo chmod +x downloaded.py`
-
+    
 - Initialise the gdrive utility by typing:
-
+    
     `gdrive init`
 
 - Open the url specified in `gdrive` and give appropriate permissions.
@@ -56,7 +35,7 @@ Create database:
 
 - Run the django development server:
 
-    `sudo Env/bin/python gdriveTorrent/manage.py runserver 0.0.0.0:8000`
+    `sudo Env/bin/python gdriveTorrent/manage.py runserver 0.0.0.0:8000` 
 
 - Open the url: *localhost:8000* in your browser and login with the admin credentials you just created.
 
