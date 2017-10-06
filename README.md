@@ -74,7 +74,6 @@ Please make changes in a separate branch and then make pull requests.
 
 ## Features to be implemented
 - Improve documentation
-- Remove dependency on path (/nikhil/Programs...) to allow the application to run in any directory
 - Extend the application to allow multiple users. The application should ask for write access to gdrive. It should then download the files on their gdrive instead of the developer's gdrive.
 - One click deploy option, so that users can deploy the application on their own servers (heroku or any other server)
 - Currently, the status of all the commands are stored in separate files (output.txt, gDriveOutput.txt and done.txt). Store it in a database and show it in the webpage.
