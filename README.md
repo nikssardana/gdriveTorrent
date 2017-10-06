@@ -25,7 +25,7 @@ A Django Application that allows you to download torrents directly to your Googl
 
 - Then, copy the access token from your browser and paste it into the terminal.
 
-Create database:
+- Create database:
 
     `Env/bin/python gdriveTorrent/manage.py migrate`
 
