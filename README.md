@@ -47,7 +47,7 @@ install.sh start_server
 
 - Then, copy the access token from your browser and paste it into the terminal.
 
-Create database:
+- Create database:
 
     `Env/bin/python gdriveTorrent/manage.py migrate`
 
