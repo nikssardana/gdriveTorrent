@@ -59,7 +59,7 @@ install.sh start_server
 
     `sudo Env/bin/python gdriveTorrent/manage.py runserver 0.0.0.0:8000`
 
-- Open the url: *<your ip address>:8000* in your browser and login with the admin credentials you just created.
+- Open the url: *your ip address:8000* in your browser and login with the admin credentials you just created.
 
 ## Note
 This application is currently in development phase. There might be a lot of bugs.
