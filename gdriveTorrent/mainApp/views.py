@@ -28,6 +28,11 @@ def downloadView(request):
 
     return render(request, 'download.html', dictV)
 
+"""
+Function to show login page.
+This function shows a login page and checks the 
+credentials entered by the user.
+"""
 def loginView(request):
     dictV = {}
     form = loginForm()
