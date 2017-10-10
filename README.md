@@ -1,7 +1,7 @@
 # Gdrive Torrent
 
 ## Introduction
-A Django Application that allows you to download torrents directly to your Google Drive. Useful for use when you are behind a firewall that does not allow torrents to be downloaded directly.
+A Django Application that allows you to download torrents directly to your Google Drive. It is useful for use when you are behind a firewall that does not allow torrents to be downloaded directly.
 
 ## Requirements
 - python2 (https://www.python.org/downloads/)  
