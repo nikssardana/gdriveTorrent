@@ -68,8 +68,6 @@ Pull requests are welcome!
 
 Also, I do not promote any illegal use of this application. Use wisely!
 
-
-
 Please make changes in a separate branch and then make pull requests.
 
 ## Features to be implemented
