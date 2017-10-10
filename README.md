@@ -32,7 +32,7 @@ install.sh start_server
 
 ### Manual install
 
-- Right now, the code must be cloned in a specific directory to run it. (E.g: /home/nikhil/Programs/Django/gdriveTorrent)
+- Currently, the code must be cloned in a specific directory to run it. (E.g: /home/nikhil/Programs/Django/gdriveTorrent)
 
     `cd into the cloned folder.`
 - Add executable permissions to downloaded.py file by typing:
