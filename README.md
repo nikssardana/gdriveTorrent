@@ -19,7 +19,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/nikssardana/gdriveTorrent/
 
 #### Note: (Tested on ubuntu)
 
-apt-get/yum packages are not installed automatically due to security concerns, the installer will inform you of any packages missing (if there are any), but here is a list of packages needed:
+apt-get/yum packages are not installed automatically due to security reasons, the installer will inform about the missing packages(if any). Here is a list of packages needed:
 ```
 sudo apt-get install python-pip python-dev build-essential aria2 git wget -y && sudo pip install virtualenv
 ```
