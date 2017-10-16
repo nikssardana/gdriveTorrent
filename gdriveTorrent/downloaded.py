@@ -3,8 +3,6 @@
 '''
 This script will be run automatically on-bt-download-complete of aria2c i.e. when the torrent is successfully downloaded.
 It gets a list of files into your downloads directory and uploads them one by one to your google drive.
-Add the following line in ~/aria2.conf (if not already present):
-    on-bt-download-complete = <path to downloaded.py>
 '''
 
 import os
