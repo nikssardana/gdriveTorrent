@@ -27,15 +27,22 @@ def uploadFiles():
         #Run gdrive command and upload the file:"./downloads/fileName" to gdrive
         script = 'gdrive upload  "%s%s" --recursive'%(path,fileName)
         logFile = open('outputGdrive.txt','a')
-        process = Popen(script, shell = True, stdout=logFile, stderr=logFile)
+        process = Popen(script, shell = True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         #Delete the uploaded file from ./downloads folder, after the subprocess is completed
         poll = process.poll()
         while poll == None:
             poll = process.poll()
             continue
-        script = 'rm -rf "%s%s"'%(path,fileName)
-        os.system(script)
+        result = process.communicate()[0]
+        if 'Failed' not in result:
+            #File successfully uploaded, delete it now
+            script = 'rm -rf "%s%s"'%(path,fileName)
+            os.system(script)
+        else:
+            #gdrive script failed, try again
+            #NOTE: This may cause the script to run for a long time if API quota is exhausted, but it won't delete those files from server that have not successfully been uploaded.
+            continue
 
 
 #If another instance of this script is already running, exit
