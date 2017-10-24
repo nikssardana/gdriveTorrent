@@ -10,6 +10,7 @@ from subprocess import Popen
 import subprocess
 from django.conf import settings
 
+# Main logic
 @login_required
 def downloadView(request):
     dictV = {}
