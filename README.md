@@ -61,15 +61,15 @@ install.sh start_server
 
 - Open the URL: *your ip address:8000* in your browser and login with the admin credentials you just created.
 
-## Note
+## Notes
 
-This application is currently in development phase. There might be a lot of bugs.
+- This application is currently in development phase. There might be a lot of bugs.
 
-Pull requests are welcome!
+- Pull requests are welcome!
 
-Also, I do not promote any illegal use of this application. Use wisely!
+- I do not promote any illegal use of this application. Use wisely!
 
-Please make changes in a separate branch and then make pull requests.
+- Please make changes in a separate branch and then make pull requests.
 
 ## Features to be implemented
 
