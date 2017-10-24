@@ -10,7 +10,10 @@ from subprocess import Popen
 import subprocess
 from django.conf import settings
 
-# Main logic
+"""
+View to show download page.
+This view shows a textbox in which user can enter a .torrent or magnetic link.It then downloads the file on the server and uploads it to user's google drive.
+"""
 @login_required
 def downloadView(request):
     dictV = {}
